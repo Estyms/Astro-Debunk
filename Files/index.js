@@ -8,8 +8,13 @@ if (urlParams.get('prenom') != null && urlParams.get('prenom').length  >  0){
             var items = [];
             $.each( data, function( key, val ) {
                 if (key.toLowerCase() == name.toLowerCase()) {
-                    console.log("HEY");
-                    items.push("<h4>" + val.classement +"# "+ key + "<h4/><h5>" + val.score + " Points</h5>" );
+                  str = ""
+                  if (val.score < 60) str = "Pas très Sexy comme <b>0.02%</b> des Gens";
+                  if (val.score < 300) str = "Assez Sexy comme <b>1.73%</b> des Gens";
+                  if (val.score < 600) str = "Très Sexy comme <b>15.02%</b> des Gens";
+                  if (val.score > 599) str = "Le plus sexy comme <b>83.23%</b> des Gens";
+                  console.log("HEY");
+                  items.push("<h4>" + val.classement +"# "+ key + "<h4/><h5>" + val.score + " Points</h5><h6>" + str + "</h6>" );
                 }
             });
            if (items.length == 0) items.push("<h4> Ce prénom n'est pas dans la base de données.");
