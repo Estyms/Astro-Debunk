@@ -1,9 +1,9 @@
 var urlParams = new URLSearchParams(window.location.search);
 if (urlParams.get('prenom') != null && urlParams.get('prenom').length  >  0){
-    $.getJSON( "./Files/Classement.json", function( data ) {
+    $.getJSON( "/Astro-Debunk/Files/Classement.json", function( data ) {
         name = urlParams.get('prenom').normalize("NFD").replace(/[\u0300-\u036f]/g, "");
 
-        $.getJSON( "./Files/Classement.json", function( data ) {
+        $.getJSON( "/Astro-Debunk/Files/Classement.json", function( data ) {
             
             var items = [];
             $.each( data, function( key, val ) {
@@ -19,7 +19,7 @@ if (urlParams.get('prenom') != null && urlParams.get('prenom').length  >  0){
               html: items.join( "" )
             }).appendTo( "body" );
 
-            $.getJSON( "./Files/Classement.json", function( data ) {
+            $.getJSON( "/Astro-Debunk/Files/Classement.json", function( data ) {
                 var items = [];
                 $.each( data, function( key, val ) {
                   items.push( "<li class='collection-item'><h6>" + val.classement +"# "+ key + "<h6/>" + val.score + " Points </li>" );
@@ -34,7 +34,7 @@ if (urlParams.get('prenom') != null && urlParams.get('prenom').length  >  0){
     });
     
 } else{
-    $.getJSON( "./Files/Classement.json", function( data ) {
+    $.getJSON( "/Astro-Debunk/Files/Classement.json", function( data ) {
         var items = [];
         $.each( data, function( key, val ) {
           items.push( "<li class='collection-item'><h6>" + val.classement +"# "+ key + "<h6/>" + val.score + " Points </li>" );
