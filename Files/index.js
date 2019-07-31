@@ -18,11 +18,12 @@ if (urlParams.get('prenom') != null && urlParams.get('prenom').length  >  0){
               "style": "margin-bottom:50px",
               html: items.join( "" )
             }).appendTo( "body" );
-
+            i = 0;
             $.getJSON( "/Astro-Debunk/Files/Classement.json", function( data ) {
                 var items = [];
                 $.each( data, function( key, val ) {
                   items.push( "<li class='collection-item'><h6>" + val.classement +"# "+ key + "<h6/>" + val.score + " Points </li>" );
+                  if (i++ == 100) break;
                 });
                
                 $( "<ul>", {
@@ -36,8 +37,10 @@ if (urlParams.get('prenom') != null && urlParams.get('prenom').length  >  0){
 } else{
     $.getJSON( "/Astro-Debunk/Files/Classement.json", function( data ) {
         var items = [];
+        i = 0;
         $.each( data, function( key, val ) {
           items.push( "<li class='collection-item'><h6>" + val.classement +"# "+ key + "<h6/>" + val.score + " Points </li>" );
+          if (i++ == 100) break;
         });
        
         $( "<ul>", {
