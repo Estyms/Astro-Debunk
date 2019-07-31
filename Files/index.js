@@ -14,7 +14,7 @@ if (urlParams.get('prenom') != null && urlParams.get('prenom').length  >  0){
                   if (val.score < 600) str = "êtes très Sexy comme <b>15.02%</b> des gens.";
                   if (val.score > 599) str = "êtes le plus Sexy comme <b>83.23%</b> des gens.";
                   console.log("HEY");
-                  items.push("<h4>" + val.classement +"# "+ key + "<h4/><h5>" + val.score + " Points</h5><h6>" + str + "</h6>Vous " );
+                  items.push("<h4>" + val.classement +"# "+ key + "<h4/><h5>" + val.score + " Points</h5><h6>Vous " + str + "</h6> " );
                 }
             });
            if (items.length == 0) items.push("<h4> Ce prénom n'est pas dans la base de données.");
