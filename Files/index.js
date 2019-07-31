@@ -51,4 +51,4 @@ if (urlParams.get('prenom') != null && urlParams.get('prenom').length  >  0){
 
 history.pushState({
     id: 'homepage'
-}, 'Calc-Name', "/");   
+}, 'Calc-Name', "/Astro-Debunk");   
