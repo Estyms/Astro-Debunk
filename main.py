@@ -1,41 +1,41 @@
+#Modules
 import codecs
 import unidecode
 from name import Name
 import json
-import csv
 import matplotlib.pyplot as plot
 
-def is_ascii(s):
-    return all(ord(c) < 128 for c in s)
+#Ouverture et lecture des fichiers
+prenoms = codecs.open("prenom.txt","r", "utf-8")
+classement = codecs.open("Classement.json","w+","utf-8")
+linesPrenoms = prenoms.readlines()
 
-file = codecs.open("prenom.txt","r", "utf-8")
-file2 = codecs.open("Classement.json","w+","utf-8")
-a = file.readlines()
-liste = []
+#Importation des prénoms dans une liste à partir du fichier prenom.txt
+nameList = []
+for line in linesPrenoms:
+    decodedName = unidecode.unidecode(line).replace("\n","").replace("\r","")
+    name = Name(decodedName.capitalize())
+    name.calc()
+    nameList.append(name)
 
-for line in a:
-    test = unidecode.unidecode(line).replace("\n","").replace("\r","")
-    if '' in test or len(test)==0:
-        continue
-    else:
-        name = Name(test.capitalize())
-        name.calc()
-        liste.append(name)
+#Tri par score de la liste des prénoms
+nameList.sort(key=lambda x: x.score, reverse=True)
 
-liste.sort(key=lambda x: x.score, reverse=True)
+#Création du classement pour chacun des prénoms
 
 dictio = {}
+
 plotdic = {
     "Pas Très Sexy":0,
     "Assez Sexy":0,
     "Très Sexy":0,
     "Le Plus Sexy":0
 }
-perc = {}
+
 
 j = 0
 currentScore = 0
-for i in liste:
+for i in nameList:
     if i.score != currentScore: 
         j = j + 1
         currentScore = i.score
@@ -52,11 +52,18 @@ for i in liste:
         "classement":j,
         "score":i.score}
 
-perc["Le Plus Sexy"] = (plotdic["Le Plus Sexy"] / len(liste))*100
-perc["Très Sexy"] = (plotdic["Très Sexy"] / len(liste))*100
-perc["Assez Sexy"] = (plotdic["Assez Sexy"] / len(liste))*100
-perc["Pas Très Sexy"] = (plotdic["Pas Très Sexy"] / len(liste))*100
+#Écriture du classement dans un fichier json 
+classement.write(json.dumps(dictio, indent=4))
 
+#Calcul des pourcentage de chacune des catégories
+perc = {}
+
+perc["Le Plus Sexy"] = (plotdic["Le Plus Sexy"] / len(nameList))*100
+perc["Très Sexy"] = (plotdic["Très Sexy"] / len(nameList))*100
+perc["Assez Sexy"] = (plotdic["Assez Sexy"] / len(nameList))*100
+perc["Pas Très Sexy"] = (plotdic["Pas Très Sexy"] / len(nameList))*100
+
+#Création du fichier stat
 colors = ['red', 'green', 'orange', 'blue']
 
 labels = [
@@ -65,16 +72,12 @@ labels = [
     "Assez Sexy " + str(perc["Assez Sexy"])[0:5] + "%\nEffectif : " + str(plotdic["Assez Sexy"]),
     "Pas Très Sexy " + str(perc["Pas Très Sexy"])[0:5] + "%\nEffectif : " + str(plotdic["Pas Très Sexy"])
     ]
-print(labels)
+
 patches, text = plot.pie(list(perc.values()), colors=colors, startangle=90)
 plot.gcf().set_facecolor("#15202b")
 plot.axis("equal")
 plot.legend(patches,labels,loc='best')
 plot.tight_layout()
 
-
+#Affichage du diagramme
 plot.show()
-
-file2.write(json.dumps(dictio, indent=4))
-
-        

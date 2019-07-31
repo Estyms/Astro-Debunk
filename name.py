@@ -1,10 +1,14 @@
+#Module
 import re
 
+#Création de la classe Name
 class Name:
     def __init__(self,name):
         self.name = name
         self.score = 0
         self.parsedName = ''
+        
+        #Score de chacune des lettres
         self.dic = {
                 'a':100,
                 'b':14,
@@ -35,7 +39,7 @@ class Name:
                 ' ':0
             }
     
-
+    #Calcul des points du prénom
     def calc(self):
         name = self.name.lower()
         name = name.replace('-'," ").replace('\'', " ")
