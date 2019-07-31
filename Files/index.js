@@ -23,7 +23,7 @@ if (urlParams.get('prenom') != null && urlParams.get('prenom').length  >  0){
                 $.each( data, function( key, val ) {
                   items.push( "<li class='collection-item'><h6>" + val.classement +"# "+ key + "<h6/>" + val.score + " Points </li>" );
                   i++;
-                  if (i == 100) return;
+                  if (i == 100) return false;
                 });
                
                 $( "<ul>", {
@@ -41,7 +41,7 @@ if (urlParams.get('prenom') != null && urlParams.get('prenom').length  >  0){
         $.each( data, function( key, val ) {
           items.push( "<li class='collection-item'><h6>" + val.classement +"# "+ key + "<h6/>" + val.score + " Points </li>" );
           i++;
-          if (i == 100) return;
+          if (i == 100) return false;
         });
        
         $( "<ul>", {
