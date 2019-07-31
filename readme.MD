@@ -10,6 +10,6 @@ Tout d'abord j'ai récupéré les prénoms français enregistré entre 1900 et 2
 
 Puis ai trié les données afin d'obtenir un total de 33479 prénoms.
 
-Et enfin écrits le programme afin de calculer les points de chacun des prénoms ce qui m'a permi de faire mes statistiques.
+Et enfin écris le programme afin de calculer les points de chacun des prénoms ce qui m'a permi de faire mes statistiques.
 
 ![Statistiques](./Image/Astrologie-dark.png)
