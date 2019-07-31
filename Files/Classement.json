@@ -94529,7 +94529,7 @@
     },
     "Mickael": {
         "classement": 1844,
-        "score": 693    
+        "score": 693
     },
     "Mohand": {
         "classement": 1844,
@@ -123302,5 +123302,9 @@
     "Vu": {
         "classement": 2410,
         "score": 21
+    },
+    "": {
+        "classement": 2411,
+        "score": 0
     }
 }

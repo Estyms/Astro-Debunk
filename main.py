@@ -6,8 +6,8 @@ import json
 import matplotlib.pyplot as plot
 
 #Ouverture et lecture des fichiers
-prenoms = codecs.open("prenom.txt","r", "utf-8")
-classement = codecs.open("Classement.json","w+","utf-8")
+prenoms = codecs.open("./Files/prenom.txt","r", "utf-8")
+classement = codecs.open("./Files/Classement.json","w+","utf-8")
 linesPrenoms = prenoms.readlines()
 
 #Importation des prénoms dans une liste à partir du fichier prenom.txt

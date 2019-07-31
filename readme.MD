@@ -12,4 +12,4 @@ Puis ai trié les données afin d'obtenir un total de 33479 prénoms au total.
 
 Et enfin écrit le programme afin de calculer les points de chacun des prénoms ce qui m'a permi de faire mes statistiques.
 
-![Statistiques](./Astrologie-dark.png)
+![Statistiques](./Image/Astrologie-dark.png)
